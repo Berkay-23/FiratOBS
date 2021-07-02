@@ -1,0 +1,8 @@
+.content .container{
+    flex-direction: column;
+    align-items: center;
+}
+.content .container .card{
+    width: 50%;
+}
+/* ---------- ALERT --------- */

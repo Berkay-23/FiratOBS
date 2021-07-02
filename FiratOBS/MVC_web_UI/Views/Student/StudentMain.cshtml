@@ -1,0 +1,43 @@
+﻿@model MVC_web_UI.Models.StudentMainModel
+
+@{
+    ViewData["Title"] = "Öğrenci Ana Ekranı";
+    ViewData["Mail Extension"] = "@firat.edu.tr";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+
+<div class="container pos-relaive">
+
+    <div class="card text-white bg-dark mb-3 col-3">
+        <div class="card-header text-center"><h5>Öğrenim Bilgileri</h5></div>
+        <div class="card-body text-center">
+            <p class="card-text">
+                @Html.DisplayFor(model => model.Student.Faculty) <br>
+                @Html.DisplayFor(model => model.Student.Department) <br>
+                @Html.DisplayFor(model => model.Student.Class). Sınıf
+            </p>
+        </div>
+    </div>
+
+    <div class="card text-white bg-dark mb-3 col-3">
+        <div class="card-header text-center"><h5>Danışman Bilgileri</h5></div>
+        <div class="card-body text-center">
+            <p class="card-text">
+                @Html.DisplayFor(model => model.Academician.FirstName)
+                @Html.DisplayFor(model => model.Academician.LastName) <br>
+                @Html.DisplayFor(model => model.Student.CounselorMail)@ViewData["Mail Extension"]
+            </p>
+        </div>
+    </div>
+
+    <div class="card text-white bg-dark mb-3 col-3">
+        <div class="card-header text-center"><h5>Transkript Bilgileri</h5></div>
+        <div class="card-body text-center d-grid">
+            <p class="card-text">AGNO : @Html.DisplayFor(model => model.Student.TranscriptNote)</p>
+            <a href="#" class="btn btn-primary">İncele</a>
+        </div>
+    </div>
+
+</div>
+

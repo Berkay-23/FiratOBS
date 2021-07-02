@@ -1,0 +1,146 @@
+﻿@using Microsoft.CodeAnalysis
+@{
+    ViewData["Title"] = "Login Page";
+    ViewData["mail_extension"] = "@firat.edu.tr";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="containerLogin">
+
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+        {
+            <div class="userType">
+
+                <input type="radio" class="btn-check" name="UserType" value="student" id="studentRadioBtn" autocomplete="off"
+                       checked>
+
+                <label class="btn btn-outline-success" for="studentRadioBtn" id="studentRadio">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>Öğrenci Girişi</span>
+                </label>
+
+                <input type="radio" class="btn-check" name="UserType" value="academician" id="academicianRadioBtn" autocomplete="off">
+
+                <label class="btn btn-outline-danger" for="academicianRadioBtn" id="academicianRadio">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <span>Akademisyen Girişi</span>
+                </label>
+
+            </div>
+
+            <div id="loginForm" class="col-12">
+
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="input-mail" onkeypress="isInputNumber(event)" placeholder="E-Posta Adresi" name="UserName">
+                    <span class="input-group-text" id="basic-addon2">@ViewData["mail_extension"]</span>
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" id="input-pass" placeholder="Şifre" name="Password">
+                </div>
+
+                <div class="d-grid col-12">
+                    <button class="btn btn-success" type="submit">Giriş Yap</button>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="alert-default" id="alertBox">
+
+        <div class="content-alert">
+
+            <div class="warn-icon">
+                <span> <i class="fas fa-exclamation"></i> </span>
+            </div>
+
+            <h2 id="alert-title"></h2>
+            <p id="alert-message"></p>
+
+            <button class="btn bg-dark" id="alertCloseBtn">TAMAM</button>
+        </div>
+
+    </div>
+</main>
+
+<footer>
+    <div class="wrapper">
+
+        <div class="button btn-facebook">
+            <div class="icon"><i class="fab fa-facebook"></i></div>
+            <span>Facebook</span>
+        </div>
+
+        <div class="button btn-twitter">
+            <div class="icon"><i class="fab fa-twitter"></i></div>
+            <span>Twitter</span>
+        </div>
+
+        <div class="button btn-linkedin-in">
+            <div class="icon"><i class="fab fa-linkedin-in"></i></div>
+            <span>LinkedIn</span>
+        </div>
+
+        <div class="button btn-youtube">
+            <div class="icon"><i class="fab fa-youtube"></i></div>
+            <span>YouTube</span>
+        </div>
+
+        <div class="button btn-instagram">
+            <div class="icon"><i class="fab fa-instagram"></i></div>
+            <span>Instagram</span>
+        </div>
+    </div>
+</footer>
+
+@if (ViewBag.Message != null)
+{
+    if (ViewBag.Message.Equals("Student not found") || ViewBag.Message.Equals("Academician not found"))
+    {
+        <script>
+            const alertBox = document.querySelector("#alertBox");
+            const alertTitle = document.querySelector("#alert-title");
+            const alertMessage = document.querySelector("#alert-message");
+
+            alertBox.classList.remove("alert-hide");
+            alertBox.classList.remove("alert-default");
+            alertBox.classList.add("alert-show");
+
+            alertTitle.textContent = "Kayıt Bulunamadı";
+            alertMessage.textContent = "Kayıtlarda böyle bir kullanıcıya rastlanmadı. mail bilginizi doğru girdiğinizden emin olun.";
+        </script>
+    }
+
+    else if (ViewBag.Message.Equals("Student wrong password") || ViewBag.Message.Equals("Academician wrong password"))
+    {
+        <script>
+            const alertBox = document.querySelector("#alertBox");
+            const alertTitle = document.querySelector("#alert-title");
+            const alertMessage = document.querySelector("#alert-message");
+
+            alertBox.classList.remove("alert-hide");
+            alertBox.classList.remove("alert-default");
+            alertBox.classList.add("alert-show");
+
+            alertTitle.textContent = "Hatalı Şifre";
+            alertMessage.textContent = "Hatalı bir şifre girdiniz. Lütfen tekrar deneyin.";
+        </script>
+    }
+    else if(ViewBag.Message.Equals("Password not entered"))
+    {
+        <script>
+            const alertBox = document.querySelector("#alertBox");
+            const alertTitle = document.querySelector("#alert-title");
+            const alertMessage = document.querySelector("#alert-message");
+
+            alertBox.classList.remove("alert-hide");
+            alertBox.classList.remove("alert-default");
+            alertBox.classList.add("alert-show");
+
+            alertTitle.textContent = "Boş Alan";
+            alertMessage.textContent = "Mail ya da şifre alanlarından en az birini boş bıraktınız.";
+        </script>
+    }
+}
+
+<script src="~/Design/javascript/designLogin.js"></script>

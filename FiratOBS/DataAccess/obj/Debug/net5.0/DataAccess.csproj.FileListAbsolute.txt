@@ -1,0 +1,15 @@
+C:\Users\iredc\source\repos\FiratOBS\DataAccess\obj\Debug\net5.0\DataAccess.csproj.AssemblyReference.cache
+C:\Users\iredc\source\repos\FiratOBS\DataAccess\obj\Debug\net5.0\DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\iredc\source\repos\FiratOBS\DataAccess\obj\Debug\net5.0\DataAccess.AssemblyInfoInputs.cache
+C:\Users\iredc\source\repos\FiratOBS\DataAccess\obj\Debug\net5.0\DataAccess.AssemblyInfo.cs
+C:\Users\iredc\source\repos\FiratOBS\DataAccess\obj\Debug\net5.0\DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\iredc\source\repos\FiratOBS\DataAccess\bin\Debug\net5.0\DataAccess.deps.json
+C:\Users\iredc\source\repos\FiratOBS\DataAccess\bin\Debug\net5.0\DataAccess.dll
+C:\Users\iredc\source\repos\FiratOBS\DataAccess\bin\Debug\net5.0\ref\DataAccess.dll
+C:\Users\iredc\source\repos\FiratOBS\DataAccess\bin\Debug\net5.0\DataAccess.pdb
+C:\Users\iredc\source\repos\FiratOBS\DataAccess\bin\Debug\net5.0\Entities.dll
+C:\Users\iredc\source\repos\FiratOBS\DataAccess\bin\Debug\net5.0\Entities.pdb
+C:\Users\iredc\source\repos\FiratOBS\DataAccess\obj\Debug\net5.0\DataAccess.csproj.CopyComplete
+C:\Users\iredc\source\repos\FiratOBS\DataAccess\obj\Debug\net5.0\DataAccess.dll
+C:\Users\iredc\source\repos\FiratOBS\DataAccess\obj\Debug\net5.0\ref\DataAccess.dll
+C:\Users\iredc\source\repos\FiratOBS\DataAccess\obj\Debug\net5.0\DataAccess.pdb
