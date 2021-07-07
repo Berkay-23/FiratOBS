@@ -9,12 +9,15 @@
       "DataAccess/1.0.0": {
         "dependencies": {
           "Entities": "1.0.0",
-          "FireSharp": "2.0.4"
+          "FireSharp": "2.0.4",
+          "FontAwesome": "4.7.0",
+          "bootstrap": "5.0.2"
         },
         "runtime": {
           "DataAccess.dll": {}
         }
       },
+      "bootstrap/5.0.2": {},
       "FireSharp/2.0.4": {
         "dependencies": {
           "Microsoft.Bcl.Async": "1.0.168",
@@ -28,6 +31,7 @@
           }
         }
       },
+      "FontAwesome/4.7.0": {},
       "Microsoft.Bcl/1.1.9": {
         "dependencies": {
           "Microsoft.Bcl.Build": "1.0.14"
@@ -78,6 +82,10 @@
         }
       },
       "Entities/1.0.0": {
+        "dependencies": {
+          "FontAwesome": "4.7.0",
+          "bootstrap": "5.0.2"
+        },
         "runtime": {
           "Entities.dll": {}
         }
@@ -90,12 +98,26 @@
       "serviceable": false,
       "sha512": ""
     },
+    "bootstrap/5.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RsOWqBzgldDKxNkMIUZ+X6qqPfJhHLfMBkVoZBCFXkKmtz5ocRN2YJVmFulCGatN4ZQc/LhivNSbUKI10LGH4w==",
+      "path": "bootstrap/5.0.2",
+      "hashPath": "bootstrap.5.0.2.nupkg.sha512"
+    },
     "FireSharp/2.0.4": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-laSHpVUBG6iCTUixmpeUmYxie2zbziOBM+LU0v2A0ETE9dUyBA+8aY63xql/o8LXj+kFybBLYUKBUrLCZWaq+A==",
       "path": "firesharp/2.0.4",
       "hashPath": "firesharp.2.0.4.nupkg.sha512"
+    },
+    "FontAwesome/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-n4H/brfszElyoZ4kmGh8E75uqvLzLvFr3h2PFVdPH1LwUmWIpeqdaW2pcC4oZAhg7sESyObh0IZpAI8COCNeUg==",
+      "path": "fontawesome/4.7.0",
+      "hashPath": "fontawesome.4.7.0.nupkg.sha512"
     },
     "Microsoft.Bcl/1.1.9": {
       "type": "package",

@@ -27,7 +27,7 @@ btnSlider.addEventListener("click", () => {
         iconArrow.classList.add("pos-right");
         iconArrow.classList.remove("turn-left");
 
-        contentArea.style.width = "calc(100% - 40px)";
+        contentArea.style.width = "calc(100% - 50px)";
         checkbox.checked = true;
     }
 });

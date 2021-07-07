@@ -130,14 +130,6 @@ nav .sliderButton i:hover{
     color: #fff;
 }
 
-.content .container{
-    display: flex;
-    flex-direction: row;
-    justify-content:space-between;
-    flex-wrap: wrap;
-    position: relative;
-}
-
 .btn-group{
     margin: 5px;
 }
@@ -158,15 +150,64 @@ nav .sliderButton i:hover{
 }
 
 .list-group-item:hover,
-.list-group-item:hover > a{
+.list-group-item:hover > span{
     background: #FFC107;
     color: #212529;
     cursor: pointer;
 }
+.list-group-item span {
+    color: #0d6efd;
+}
+
+/*------------------------------*/
+
+.content .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 95%;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+
+.content .container .cards {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.content .receivedLessons {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 95%;
+    padding: 5px;
+}
+
+.content .receivedLessons form {
+    width: 75%;
+}
+
+.content .receivedLessons #periodSelect {
+    width: 100%;
+}
+
+.content .receivedLessons .header h2{
+    color: #000000;
+    text-align: center;
+    text-decoration: underline;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 5px #21618C;
+    margin: 30px 5px;
+}
 
 /* ---------- Footer ---------- */
-
-.wrapper{
+.wrapper {
     display: flex;
     flex-direction: row;
     align-items: center;

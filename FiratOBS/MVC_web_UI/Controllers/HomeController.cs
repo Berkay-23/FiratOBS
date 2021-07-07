@@ -27,7 +27,6 @@ namespace MVC_web_UI.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-
             return View();
         }
 
@@ -52,7 +51,8 @@ namespace MVC_web_UI.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("StudentMain","Student",_database.FindStudents(user.UserName));
+                        Student student = _database.FindStudents(user.UserName);
+                        return RedirectToAction("StudentMain","Student",student);
                     }
                 }
                 else

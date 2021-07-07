@@ -1,8 +1,89 @@
-﻿
+﻿@model ReceivedLessonsModel
 @{
     ViewData["Title"] = "Alınan Dersler";
     Layout = "~/Views/Shared/_StudentLayout.cshtml";
+    TempData["studentModel"] = TempData["studentModel"];
+
+
+    List<string> periods = new List<string>(){"20-21","19-20","18-19","17-18"};
+    List<string> season = new List<string>(){" Bahar Dönemi"," Güz Dönemi"};
+    int periodIndex = 0;
 }
 
-<h1>ReceivedLessons (Alınan Dersler)</h1>
+<div class= "receivedLessons">
 
+    @using (Html.BeginForm("ReceivedLessons", "Student", FormMethod.Post))
+    {
+        <select onchange="this.form.submit()" class="form-select" id="periodSelect" name="selectPeriod" aria-label="Default select example">
+
+            <option disabled selected>Dönem Seçiniz</option>
+
+            @for (int index = 0; index < Model.ReceivedLessonsCode.Count; index++)
+            {
+                if (Model.ReceivedLessonsCode.Count % 2 == 0)
+                {
+                    if (index % 2 == 0)
+                    {
+                        <option value=@index>@(periods[index: periodIndex] + season[0])</option> }
+                    if (index % 2 != 0)
+                    {
+                        <option value=@index>@(periods[index: periodIndex] + season[1])</option>
+                        periodIndex++;
+                    }
+                }
+
+                else //if (Model.ReceivedLessonsCode.Count % 2 != 0)
+                {
+                    if (index == 1 || index % 2 != 0)
+                        periodIndex++;
+
+                    if (index % 2 == 0)
+                    {
+                        <option>@(periods[index: periodIndex] + season[1])</option> }
+                    if (index % 2 != 0)
+                    {
+                        <option>@(periods[index: periodIndex] + season[0])</option>}
+                    }
+                }
+        </select>
+    }
+
+    @if (Model.Periods != null)
+    {
+
+        <div class="header"><h2>@Model.Selectperiod</h2></div>
+
+        <table class="table table-dark table-striped text-center">
+
+            <thead>
+                <tr>
+                    <th scope="col">Ders Kodu</th>
+                    <th scope="col">Ders Adı</th>
+                    <th scope="col">Ders Tipi</th>
+                    <th scope="col">Kredi</th>
+                    <th scope="col">AKTS</th>
+                    <th scope="col">Sınıf</th>
+                    <th scope="col">Kota</th>
+                </tr>
+            </thead>
+        
+            <tbody>
+
+                @foreach (var lesson in Model.ReceivedLessons)
+                {
+                    <tr>
+                        <td scope="row">@lesson.LessonId</td>
+                        <td scope="row">@lesson.LessonName</td>
+                        <td scope="row">@lesson.LessonType</td>
+                        <td scope="row">@lesson.Credit</td>
+                        <td scope="row">@lesson.AKTS</td>
+                        <td scope="row">@lesson.Class</td>
+                        <td scope="row">@lesson.Quota</td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        
+    }
+</div>

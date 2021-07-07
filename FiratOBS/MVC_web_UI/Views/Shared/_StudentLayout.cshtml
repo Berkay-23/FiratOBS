@@ -49,11 +49,23 @@
                         Genel İşlemler
                     </button>
                     <ul class="dropdown-menu">
-                        <li class="list-group-item"><a href="/Student/AcademicCalendar">Akademik Takvim</a></li>
-                        <li class="list-group-item"><a href="/Student/ConsultantInformation">Danışman Bilgileri</a></li>
-                        <li class="list-group-item"><a href="/Student/ReceivedLessons">Alınan Dersler</a></li>
-                        <li class="list-group-item"><a href="/Student/ExamSchedule">Sınav Takvimi</a></li>
-                        <li class="list-group-item"><a href="/Student/InternshipInformation">Staj Bilgileri</a></li>
+
+                        <a asp-action="AcademicCalendar">
+                            <li class="list-group-item"><span>Akademik Takvim</span></li>
+                        </a>
+                        <a asp-action="ConsultantInformation">
+                            <li class="list-group-item"><span>Danışman Bilgileri</span></li>
+                        </a>
+                        <a asp-action="ReceivedLessons">
+                            <li class="list-group-item"><span>Alınan Dersler</span></li>
+                        </a>
+                        <a asp-action="LessonEnrollment">
+                            <li class="list-group-item"><span>Sınav Takvimi</span></li>
+                        </a>
+                        <a asp-action="InternshipInformation">
+                            <li class="list-group-item"><span>Staj Bilgileri</span></li>
+                        </a>
+
                     </ul>
                 </div>
 
@@ -63,10 +75,20 @@
                         Ders & Dönem İşlemleri
                     </button>
                     <ul class="dropdown-menu">
-                        <li class="list-group-item"><a href="/Student/LessonEnrollment">Ders Kayıt</a></li>
-                        <li class="list-group-item"><a href="/Student/NoteList">Not Listesi</a></li>
-                        <li class="list-group-item"><a href="/Student/TranscriptScript">Transkript Senaryosu</a></li>
-                        <li class="list-group-item"><a href="/Student/AbsenceStatus">Devamsızlık Durumu</a></li>
+
+                        <a asp-action="LessonEnrollment">
+                            <li class="list-group-item"><span>Ders Kayıt</span></li>
+                        </a>
+                        <a asp-action="NoteList">
+                            <li class="list-group-item"><span>Not Listesi</span></li>
+                        </a>
+                        <a asp-action="TranscriptScript">
+                            <li class="list-group-item"><span>Transkript Senaryosu</span></li>
+                        </a>
+                        <a asp-action="AbsenceStatus">
+                            <li class="list-group-item"><span>Devamsızlık Durumu</span></li>
+                        </a>
+
                     </ul>
                 </div>
             </div>

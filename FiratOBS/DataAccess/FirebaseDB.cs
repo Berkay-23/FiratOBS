@@ -25,39 +25,38 @@ namespace DataAccess
 
         //------------------------------------------------------
 
-        //public List<Lesson> GetLessons(string period, string session)
-        //{
-        //    _client = new FirebaseClient(_config);
-        //    FirebaseResponse response = _client.Get("Periods/" + period + "/" + session + "/");
-        //    List<Lesson> data = JsonConvert.DeserializeObject<List<Lesson>>(response.Body);
-
-        //    List<Lesson> lessons = new List<Lesson>();
-
-        //    foreach (var item in data)
-        //    {
-        //        //lessons.Add(JsonConvert.DeserializeObject<Lesson>(((JProperty)item).Value.ToString()));
-        //    }
-
-        //    return lessons;
-        //}
-
-        public void UpdateStudentNoteInfo(string period, string session, string lesson, string number, StudentNoteInfo studentinfo)
+        public List<Lesson> GetLessons(List<string> lessonCodes)
         {
             _client = new FirebaseClient(_config);
-            _client.Set($"Periods/{period}/{session}/{lesson}/StudentNotes/{number}", studentinfo);
+
+            List<Lesson> lessons = new List<Lesson>();
+
+            foreach (string code in lessonCodes)
+            {
+                FirebaseResponse response = _client.Get($"Lessons/{code}"); 
+                Lesson data = JsonConvert.DeserializeObject<Lesson>(response.Body);
+                lessons.Add(data);
+            }
+            return lessons;
         }
 
-        public void UpdateLesson(string period, string session, string lessonName, Lesson lesson)
+        public void UpdateStudentNoteInfo(string period, string season, string lesson, string number, StudentNoteInfo studentinfo)
         {
             _client = new FirebaseClient(_config);
-            _client.Update($"Periods/{period}/{session}/{lessonName}",lesson);
+            _client.Set($"Periods/{period}/{season}/{lesson}/StudentNotes/{number}", studentinfo);
         }
 
-        public List<StudentNoteInfo> GetStudentInfos(string period, string session, string lesson)
+        public void UpdateLesson(string period, string season, string lessonName, Lesson lesson)
+        {
+            _client = new FirebaseClient(_config);
+            _client.Update($"Lessons/{period}/{season}/{lessonName}",lesson);
+        }
+
+        public List<StudentNoteInfo> GetStudentInfos(string period, string season, string lesson)
         {
             _client = new FirebaseClient(_config);
 
-            FirebaseResponse response = _client.Get($"Periods/{period}/{session}/{lesson}/StudentNotes");
+            FirebaseResponse response = _client.Get($"Periods/{period}/{season}/{lesson}/StudentNotes");
             dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
             List<StudentNoteInfo> studentNoteInfos = new List<StudentNoteInfo>();
 

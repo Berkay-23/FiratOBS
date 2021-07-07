@@ -134,8 +134,5 @@ C:\Users\iredc\source\repos\FiratOBS\MVC_web_UI\bin\Debug\net5.0\DataAccess.dll
 C:\Users\iredc\source\repos\FiratOBS\MVC_web_UI\bin\Debug\net5.0\Entities.dll
 C:\Users\iredc\source\repos\FiratOBS\MVC_web_UI\bin\Debug\net5.0\DataAccess.pdb
 C:\Users\iredc\source\repos\FiratOBS\MVC_web_UI\bin\Debug\net5.0\Entities.pdb
-C:\Users\iredc\source\repos\FiratOBS\MVC_web_UI\obj\Debug\net5.0\Razor\Views\Home\StudentList.cshtml.g.cs
-C:\Users\iredc\source\repos\FiratOBS\MVC_web_UI\obj\Debug\net5.0\Razor\Views\Home\Detail.cshtml.g.cs
-C:\Users\iredc\source\repos\FiratOBS\MVC_web_UI\obj\Debug\net5.0\Razor\Views\Home\Edit.cshtml.g.cs
 C:\Users\iredc\source\repos\FiratOBS\MVC_web_UI\bin\Debug\net5.0\Business.dll
 C:\Users\iredc\source\repos\FiratOBS\MVC_web_UI\bin\Debug\net5.0\Business.pdb

@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "zYYaxjkOTPo4loxnAeUhpcRDgRNdYyjZKJDJ1b4fpUWz1HnIrbBK2wo3KK8PFwDeLJfvsHKUhD4OjP46NE3CFA==",
+  "dgSpecHash": "y1kWV6yoT1FIMO/6EstTjnJ85OgmrU0UfTqINtsnZEMxkL6YagAaLQk/VGsgeXtMIRgxamo/rA70PrG9HhtsDw==",
   "success": true,
   "projectFilePath": "C:\\Users\\iredc\\source\\repos\\FiratOBS\\DataAccess\\DataAccess.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\iredc\\.nuget\\packages\\bootstrap\\5.0.2\\bootstrap.5.0.2.nupkg.sha512",
     "C:\\Users\\iredc\\.nuget\\packages\\firesharp\\2.0.4\\firesharp.2.0.4.nupkg.sha512",
+    "C:\\Users\\iredc\\.nuget\\packages\\fontawesome\\4.7.0\\fontawesome.4.7.0.nupkg.sha512",
     "C:\\Users\\iredc\\.nuget\\packages\\microsoft.bcl\\1.1.9\\microsoft.bcl.1.1.9.nupkg.sha512",
     "C:\\Users\\iredc\\.nuget\\packages\\microsoft.bcl.async\\1.0.168\\microsoft.bcl.async.1.0.168.nupkg.sha512",
     "C:\\Users\\iredc\\.nuget\\packages\\microsoft.bcl.build\\1.0.14\\microsoft.bcl.build.1.0.14.nupkg.sha512",

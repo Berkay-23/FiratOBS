@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "93jGtirRoEovQ/8SD9yKwJw8UzyEnByTFhn4hffZPEsqfTOfmcf4ZSaIRb2xlHwmxIxtzp0koENS/OJ0+GFz6w==",
+  "dgSpecHash": "aCI9d1raDEyzLqL8uhF4arBKoC0ZyF4/3wpLfM0vMcCKjB4fjAMt1apwtbuwSf/3l3f7HuaR/RpbkKnt6KLGQw==",
   "success": true,
   "projectFilePath": "C:\\Users\\iredc\\source\\repos\\FiratOBS\\Entities\\Entities.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\iredc\\.nuget\\packages\\bootstrap\\5.0.2\\bootstrap.5.0.2.nupkg.sha512",
+    "C:\\Users\\iredc\\.nuget\\packages\\fontawesome\\4.7.0\\fontawesome.4.7.0.nupkg.sha512"
+  ],
   "logs": []
 }

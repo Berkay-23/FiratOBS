@@ -36,7 +36,9 @@
           "Business": "1.0.0",
           "DataAccess": "1.0.0",
           "Entities": "1.0.0",
+          "FontAwesome": "4.7.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "5.0.2",
+          "bootstrap": "5.0.2",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "5.0.0.0",
@@ -328,6 +330,7 @@
           "MVC_web_UI.dll": {}
         }
       },
+      "bootstrap/5.0.2": {},
       "FireSharp/2.0.4": {
         "dependencies": {
           "Microsoft.Bcl.Async": "1.0.168",
@@ -344,6 +347,7 @@
           "lib/portable-net45+sl5+wp8+win8/FireSharp.dll": {}
         }
       },
+      "FontAwesome/4.7.0": {},
       "Humanizer.Core/2.2.0": {
         "dependencies": {
           "NETStandard.Library": "1.6.1"
@@ -1647,7 +1651,9 @@
       "Business/1.0.0": {
         "dependencies": {
           "DataAccess": "1.0.0",
-          "Entities": "1.0.0"
+          "Entities": "1.0.0",
+          "FontAwesome": "4.7.0",
+          "bootstrap": "5.0.2"
         },
         "runtime": {
           "Business.dll": {}
@@ -1659,7 +1665,9 @@
       "DataAccess/1.0.0": {
         "dependencies": {
           "Entities": "1.0.0",
-          "FireSharp": "2.0.4"
+          "FireSharp": "2.0.4",
+          "FontAwesome": "4.7.0",
+          "bootstrap": "5.0.2"
         },
         "runtime": {
           "DataAccess.dll": {}
@@ -1669,6 +1677,10 @@
         }
       },
       "Entities/1.0.0": {
+        "dependencies": {
+          "FontAwesome": "4.7.0",
+          "bootstrap": "5.0.2"
+        },
         "runtime": {
           "Entities.dll": {}
         },
@@ -3382,12 +3394,26 @@
       "serviceable": false,
       "sha512": ""
     },
+    "bootstrap/5.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RsOWqBzgldDKxNkMIUZ+X6qqPfJhHLfMBkVoZBCFXkKmtz5ocRN2YJVmFulCGatN4ZQc/LhivNSbUKI10LGH4w==",
+      "path": "bootstrap/5.0.2",
+      "hashPath": "bootstrap.5.0.2.nupkg.sha512"
+    },
     "FireSharp/2.0.4": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-laSHpVUBG6iCTUixmpeUmYxie2zbziOBM+LU0v2A0ETE9dUyBA+8aY63xql/o8LXj+kFybBLYUKBUrLCZWaq+A==",
       "path": "firesharp/2.0.4",
       "hashPath": "firesharp.2.0.4.nupkg.sha512"
+    },
+    "FontAwesome/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-n4H/brfszElyoZ4kmGh8E75uqvLzLvFr3h2PFVdPH1LwUmWIpeqdaW2pcC4oZAhg7sESyObh0IZpAI8COCNeUg==",
+      "path": "fontawesome/4.7.0",
+      "hashPath": "fontawesome.4.7.0.nupkg.sha512"
     },
     "Humanizer.Core/2.2.0": {
       "type": "package",

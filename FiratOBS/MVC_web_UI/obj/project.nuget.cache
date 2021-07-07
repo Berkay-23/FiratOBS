@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "hNCEWshfomkHV1O6cxnlURZDJje9wnSOIBL0PnRFDUCehZgJZMMXWzjte4mWSFuQzs5tk29jIU6IDWNUbZ4n2w==",
+  "dgSpecHash": "88eIKLRUFO35UVrMSpouJjfmukXKWCrWtscvKbJLXA66Z114FKK1UG/hZL7fjwQ6nFecHDRdwgnTAK9X/nI1ig==",
   "success": true,
   "projectFilePath": "C:\\Users\\iredc\\source\\repos\\FiratOBS\\MVC_web_UI\\MVC_web_UI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\iredc\\.nuget\\packages\\bootstrap\\5.0.2\\bootstrap.5.0.2.nupkg.sha512",
     "C:\\Users\\iredc\\.nuget\\packages\\firesharp\\2.0.4\\firesharp.2.0.4.nupkg.sha512",
+    "C:\\Users\\iredc\\.nuget\\packages\\fontawesome\\4.7.0\\fontawesome.4.7.0.nupkg.sha512",
     "C:\\Users\\iredc\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",
     "C:\\Users\\iredc\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\iredc\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
