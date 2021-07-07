@@ -197,16 +197,56 @@ nav .sliderButton i:hover{
     width: 100%;
 }
 
-.content .receivedLessons .header h2{
+.content .header h2{
     color: #000000;
     text-align: center;
     text-decoration: underline;
     letter-spacing: 3px;
     text-shadow: 2px 2px 5px #21618C;
+    margin: 5px;
+}
+
+.content .receivedLessons .header h2 {
     margin: 30px 5px;
 }
 
-/* ---------- Footer ---------- */
+.content .noteList {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 95%;
+    padding: 5px;
+}
+
+.content .noteList form {
+    width: 75%;
+}
+
+.content .noteList #periodSelectNote{
+    width: 100%;
+}
+
+.content .noteList .header h2 {
+    margin: 30px 5px;
+}
+
+.content .consultantInformation {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 95%;
+    padding: 5px;
+}
+
+.content .consultantInformation .card {
+    width: 450px;
+    margin: 30px 5px;
+    background: linear-gradient(135deg, #21618C 0%, #1A5276 0%, #3498DB 100%, #fff 100%);
+}
+
+    /* ---------- Footer ---------- */
 .wrapper {
     display: flex;
     flex-direction: row;

@@ -45,20 +45,21 @@ namespace MVC_web_UI.Controllers
         [HttpGet]
         public IActionResult ConsultantInformation() // Danışman Bilgileri
         {
-            return View();
+            StudentModel studentModel = DeserializeModel();
+
+            return View(studentModel);
         }
 
         [HttpGet]
         public IActionResult ReceivedLessons() // Alınan  Dersler
         {
-            string studentData = TempData["studentModel"].ToString();
-            StudentModel studentModel  = JsonSerializer.Deserialize<StudentModel>(studentData);
-
+            StudentModel studentModel = DeserializeModel();
             Student student = _database.FindStudents(studentModel.Student.Number);
 
-            ReceivedLessonsModel model = new ReceivedLessonsModel();
-            model.ReceivedLessonsCode = student.ReceivedLessons;
-            model.Periods = null;
+            ReceivedLessonsModel model = new ReceivedLessonsModel()
+            {
+                ReceivedLessonsCode = student.ReceivedLessons,
+            };
 
             return View(model);
         }
@@ -66,18 +67,17 @@ namespace MVC_web_UI.Controllers
         [HttpPost]
         public IActionResult ReceivedLessons(int selectPeriod)
         {
-            string data = TempData["studentModel"].ToString();
-            StudentModel studentModel = JsonSerializer.Deserialize<StudentModel>(data);
-
+            StudentModel studentModel = DeserializeModel();
             Student student = _database.FindStudents(studentModel.Student.Number);
-
-            LessonListing lessonListing = new LessonListing(student.ReceivedLessons);
+            PeriodListing periodListing = new PeriodListing(student.ReceivedLessons);
             
-            ReceivedLessonsModel model = new ReceivedLessonsModel();
-            model.ReceivedLessonsCode = student.ReceivedLessons;
-            model.Periods = lessonListing.GetLessons(selectPeriod);
-            model.ReceivedLessons = _database.GetLessons(model.Periods);
-            model.Selectperiod = lessonListing.GetLessonsName(selectPeriod);
+            ReceivedLessonsModel model = new ReceivedLessonsModel()
+            {
+                ReceivedLessonsCode = student.ReceivedLessons,
+                Periods = periodListing.GetPeriods(selectPeriod),
+                ReceivedLessons = _database.GetLessons(periodListing.GetPeriods(selectPeriod)),
+                Selectperiod = periodListing.GetPeriodsName(selectPeriod)
+            };
 
             return View(model);
         }
@@ -103,7 +103,41 @@ namespace MVC_web_UI.Controllers
         [HttpGet]
         public IActionResult NoteList() // Not Listesi
         {
-            return View();
+            StudentModel studentModel = DeserializeModel();
+            Student student = _database.FindStudents(studentModel.Student.Number);
+            PeriodListing periodListing = new PeriodListing(student.ReceivedLessons);
+
+            NoteListModel model = new NoteListModel()
+            {
+                Periods = periodListing.GetPeriods() //periods (20-21 autumn, 20-21 spring)
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult NoteList(string selectPeriod) // Not Listesi
+        {
+            StudentModel studentModel = DeserializeModel();
+            Student student = _database.FindStudents(studentModel.Student.Number);
+            PeriodListing periodListing = new PeriodListing(student.ReceivedLessons);
+
+            string period = periodListing.ConvertPeriodName(selectPeriod), season = periodListing.ConvertSeasonName(selectPeriod);
+
+            List<string> receivedLessons = _database.GetReceivedLessons(student.Number, periodListing.PeriodsToInt(selectPeriod).ToString());
+            List<string> lessonNames = _database.GetLessonName(receivedLessons);
+            List<StudentNoteInfo> studentNoteInfos = _database.GetStudentNoteInfos(receivedLessons,period,season,student.Number);
+            
+
+            NoteListModel model = new NoteListModel()
+            {
+                Periods = periodListing.GetPeriods(), //periods (20-21 autumn, 20-21 spring)
+                ReceivedLessons = receivedLessons,
+                StudentNoteInfos = studentNoteInfos,
+                LessonNames = lessonNames,
+                Period = selectPeriod
+            };
+            return View(model);
         }
 
         [HttpGet]
@@ -116,6 +150,13 @@ namespace MVC_web_UI.Controllers
         public IActionResult AbsenceStatus() // Devamsızlık Durumu
         {
             return View();
+        }
+
+        private StudentModel DeserializeModel()
+        {
+            string data = TempData["studentModel"].ToString();
+            StudentModel studentModel = JsonSerializer.Deserialize<StudentModel>(data);
+            return studentModel;
         }
     }
 }

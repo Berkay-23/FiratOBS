@@ -1,7 +1,72 @@
-﻿
+﻿@model NoteListModel
 @{
     ViewData["Title"] = "Not Listesi";
     Layout = "~/Views/Shared/_StudentLayout.cshtml";
+    TempData["studentModel"] = TempData["studentModel"];
 }
 
-<h1>NoteList (Not Listesi)</h1>
+<div class= "noteList">
+
+    @using (Html.BeginForm("NoteList", "Student", FormMethod.Post))
+    {
+    <select onchange="this.form.submit()" class="form-select" id="periodSelectNote" name="selectPeriod" aria-label="Default select example">
+
+        <option selected disabled>Dönem Seçiniz</option>
+
+        @for (int i = 0; i < Model.Periods.Count; i++)
+        {
+            <option>@Model.Periods[i]</option>
+        }
+
+    </select>
+    }
+    
+    @if(Model.ReceivedLessons != null){
+
+        <div class="header"><h2>@Model.Period</h2></div>
+
+        <table class="table table-dark table-striped text-center">
+
+            <thead>
+                <tr>
+                    <th scope="col">Ders Kodu</th>
+                    <th scope="col">Ders Adı</th>
+                    <th scope="col">Vize Notu</th>
+                    <th scope="col">Final Notu</th>
+                    <th scope="col">Bütünleme Notu</th>
+                    <th scope="col">Ortalama</th>
+                    <th scope="col">Harf Notu</th>
+                    <th scope="col">Durum</th>
+                </tr>
+            </thead>
+        
+            <tbody>
+            
+            @for (int i = 0; i <Model.ReceivedLessons.Count; i++)
+            {
+                <tr>
+                    <td scope="row">@Model.ReceivedLessons[i]</td>
+                    <td scope="row">@Model.LessonNames[i]</td>
+                    <td scope="row">@Model.StudentNoteInfos[i].MidtermExam</td>
+                    <td scope="row">@Model.StudentNoteInfos[i].FinalExamination</td>
+
+                    @if (Model.StudentNoteInfos[i].MakeupExam == 0)
+                    {
+                        <td scope="row">-</td>
+                    }
+                    else
+                    {
+                        <td scope="row">@Model.StudentNoteInfos[i].MakeupExam</td>
+                    }
+
+                    <td scope="row">@Model.StudentNoteInfos[i].Average</td>
+                    <td scope="row">@Model.StudentNoteInfos[i].LetterGrade</td>
+                    <td scope="row">@Model.StudentNoteInfos[i].Status</td>
+                </tr>
+            }
+
+            </tbody>
+        </table>
+        
+    }
+</div>

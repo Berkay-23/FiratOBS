@@ -1,8 +1,26 @@
-﻿
+﻿@model StudentModel
 @{
     ViewData["Title"] = "Danışman Bilgileri";
     Layout = "~/Views/Shared/_StudentLayout.cshtml";
+    TempData["studentModel"] = TempData["studentModel"];
+    ViewBag.mailExtentions = "@firat.edu.tr";
 }
 
-<h1>ConsultantInformation (Danışman Bilgileri)</h1>
+<div class="consultantInformation">
+    
+    <div class="header"><h2>Danışman Bilgileri</h2></div>
+
+    <div class="card text-white mb-3 text-center">
+        <div class="card-header">
+            Danışman Bilgileri
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">@(Model.AcademicianName + " " + Model.AcademicianSurname)</h5>
+            <p class="card-text">@(Model.Student.CounselorMail + ViewBag.mailExtentions.ToString())</p>
+            <a href="https://mail.google.com/" class="btn btn-light d-grid">Danışmanla iletişime geç</a>
+        </div>
+    </div>
+
+</div>
+
 

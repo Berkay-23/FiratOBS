@@ -40,6 +40,45 @@ namespace DataAccess
             return lessons;
         }
 
+        public List<string> GetLessonName(List<string> lessonCodes)
+        {
+            _client = new FirebaseClient(_config);
+
+            List<string> lessonNames = new List<string>();
+
+            foreach (string lessonCode in lessonCodes)
+            {
+                FirebaseResponse response = _client.Get($"Lessons/{lessonCode}/LessonName");
+                string lessonName = JsonConvert.DeserializeObject<string>(response.Body);
+                lessonNames.Add(lessonName);
+            }
+            return lessonNames;
+        }
+
+        public List<string> GetReceivedLessons(string number, string index)
+        {
+            _client = new FirebaseClient(_config);
+            FirebaseResponse response = _client.Get($"Students/{number}/ReceivedLessons/{index}");
+            List<string> receivedLessons = JsonConvert.DeserializeObject<List<string>>(response.Body);
+
+            return receivedLessons;
+        }
+
+        public List<StudentNoteInfo> GetStudentNoteInfos(List<string> receivedLessons, string period, string season, string number)
+        {
+            _client = new FirebaseClient(_config);
+
+            List<StudentNoteInfo> studentNoteInfos = new List<StudentNoteInfo>();
+
+            foreach (string lesson in receivedLessons)
+            {
+                FirebaseResponse response = _client.Get($"Periods/{period}/{season}/{lesson}/StudentNotes/{number}");
+                StudentNoteInfo studentNoteInfo = JsonConvert.DeserializeObject<StudentNoteInfo>(response.Body);
+                studentNoteInfos.Add(studentNoteInfo);
+            }
+            return studentNoteInfos;
+        }
+
         public void UpdateStudentNoteInfo(string period, string season, string lesson, string number, StudentNoteInfo studentinfo)
         {
             _client = new FirebaseClient(_config);
