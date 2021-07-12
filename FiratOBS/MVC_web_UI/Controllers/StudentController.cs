@@ -17,6 +17,7 @@ namespace MVC_web_UI.Controllers
     public class StudentController : Controller
     {
         private readonly FirebaseDB _database = new FirebaseDB();
+        private readonly Program _program = new Program();
 
         [HttpGet]
         public IActionResult StudentMain(Student student) // Öğrenci Giriş Ekranı 
@@ -97,6 +98,25 @@ namespace MVC_web_UI.Controllers
         [HttpGet]
         public IActionResult LessonEnrollment() // Ders Kaydı
         {
+            StudentModel studentModel = DeserializeModel();
+            Student student = _database.FindStudents(studentModel.Student.Number);
+
+            LessonEnrollmentProcess lessonEnrollmentProcess = new LessonEnrollmentProcess(_program.NextPeriod,_program.NextSeason);
+
+            LessonEnrollmentModel model = new LessonEnrollmentModel()
+            {
+                NetxPeriod = _program.NextPeriod,
+                NextSeason = _program.NextSeason,
+                LessonsToBeLearned = lessonEnrollmentProcess.GetLessonsToBeLearned(student),
+                RegisteredLessons = lessonEnrollmentProcess.GetRegisteredLessons(student),
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult LessonEnrollment(object obj) // Ders Kaydı
+        {
             return View();
         }
 
@@ -109,7 +129,7 @@ namespace MVC_web_UI.Controllers
 
             NoteListModel model = new NoteListModel()
             {
-                Periods = periodListing.GetPeriods() //periods (20-21 autumn, 20-21 spring)
+                Periods = periodListing.GetPeriods(), //periods (20-21 autumn, 20-21 spring)
             };
 
             return View(model);

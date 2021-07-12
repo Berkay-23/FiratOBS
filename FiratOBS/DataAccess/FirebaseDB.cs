@@ -25,7 +25,8 @@ namespace DataAccess
 
         //------------------------------------------------------
 
-        public List<Lesson> GetLessons(List<string> lessonCodes)
+        // Kodları verilen derslerin listesini getirir.
+        public List<Lesson> GetLessons(List<string> lessonCodes) 
         {
             _client = new FirebaseClient(_config);
 
@@ -40,7 +41,8 @@ namespace DataAccess
             return lessons;
         }
 
-        public List<string> GetLessonName(List<string> lessonCodes)
+        // Kodları verilen derslerin sadece isimlerini getirir
+        public List<string> GetLessonName(List<string> lessonCodes) 
         {
             _client = new FirebaseClient(_config);
 
@@ -55,6 +57,7 @@ namespace DataAccess
             return lessonNames;
         }
 
+        //Öğrencinin bir (istenilen) dönemdeki derslerinin kodlarını getirir
         public List<string> GetReceivedLessons(string number, string index)
         {
             _client = new FirebaseClient(_config);
@@ -64,6 +67,7 @@ namespace DataAccess
             return receivedLessons;
         }
 
+        // Öğrencinin verilen ders kodlarına göre not bilgilerini getirir.
         public List<StudentNoteInfo> GetStudentNoteInfos(List<string> receivedLessons, string period, string season, string number)
         {
             _client = new FirebaseClient(_config);
@@ -79,35 +83,22 @@ namespace DataAccess
             return studentNoteInfos;
         }
 
+        // Öğrencin not bilgilerini günceller.
         public void UpdateStudentNoteInfo(string period, string season, string lesson, string number, StudentNoteInfo studentinfo)
         {
             _client = new FirebaseClient(_config);
             _client.Set($"Periods/{period}/{season}/{lesson}/StudentNotes/{number}", studentinfo);
         }
 
+        // Ders bilgilerini günceller
         public void UpdateLesson(string period, string season, string lessonName, Lesson lesson)
         {
             _client = new FirebaseClient(_config);
-            _client.Update($"Lessons/{period}/{season}/{lessonName}",lesson);
+            _client.Update($"Periods/{period}/{season}/{lessonName}",lesson);
         }
 
-        public List<StudentNoteInfo> GetStudentInfos(string period, string season, string lesson)
-        {
-            _client = new FirebaseClient(_config);
 
-            FirebaseResponse response = _client.Get($"Periods/{period}/{season}/{lesson}/StudentNotes");
-            dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
-            List<StudentNoteInfo> studentNoteInfos = new List<StudentNoteInfo>();
-
-            foreach (var item in data)
-            {
-                studentNoteInfos.Add(JsonConvert.DeserializeObject<StudentNoteInfo>(((JProperty)item).Value.ToString()));
-            }
-            return studentNoteInfos;
-        }
-
-        //-----------------------------------------------------
-
+        // Öğrenci arama
         public Student FindStudents(string number)
         {
             _client = new FirebaseClient(_config);
@@ -116,6 +107,7 @@ namespace DataAccess
             return student;
         }
 
+        // Akademsiyen arama
         public Academician FindAcademician(string mail)
         {
             _client = new FirebaseClient(_config);
@@ -124,21 +116,7 @@ namespace DataAccess
             return academician;
         }
 
-        //public void AddStudentToFireBase(Student student)
-        //{
-        //    _client = new FirebaseClient(_config);
-
-        //    //PushResponse response = _client.Push("Students/", student);
-        //    //response.Result.name = student.Number;
-        //    _client.Set("Students/" + student.Number, student);
-        //}
-
-        //public void AddAcademicianToFireBase(Academician academician)
-        //{
-        //    _client = new FirebaseClient(_config);
-        //    SetResponse setResponse = _client.Set("Academics/" + academician.Mail, academician);
-        //}
-
+        // Öğrenci, akademisyen , ders eklemeleri 
         public void AddEntitiesToFirebase(string path, Object obj)
         {
             _client = new FirebaseClient(_config);
@@ -158,5 +136,61 @@ namespace DataAccess
             }
             return students;
         }
+
+        // Bir öğrencinin alttan alınan ders bilgilerini güncelliyor.
+        public List<string> UpdateLessonsLearnedBelow(List<string> receivedLessons, string period, string season, string number)
+        {
+            _client = new FirebaseClient(_config);
+
+            List<string> lessonCodes = new List<string>();
+
+            foreach (string lesson in receivedLessons)
+            {
+                FirebaseResponse response = _client.Get($"Periods/{period}/{season}/{lesson}/StudentNotes/{number}");
+                StudentNoteInfo studentNoteInfo = JsonConvert.DeserializeObject<StudentNoteInfo>(response.Body);
+
+                if (studentNoteInfo != null)
+                {
+                    if (studentNoteInfo.LetterGrade.Equals("FF"))
+                    {
+                        lessonCodes.Add(lesson);
+                    }
+                }
+            }
+            return lessonCodes;
+        }
+
+        public Lesson GetLesson(string lessonCode)
+        {
+            _client = new FirebaseClient(_config);
+            FirebaseResponse response = _client.Get($"Lessons/{lessonCode}");
+            
+            return JsonConvert.DeserializeObject<Lesson>(response.Body);
+        }
+
+        public StudentNoteInfo GetStudentNoteInfo(string period, string season, string lessonCode, string number)
+        {
+            _client = new FirebaseClient(_config);
+            FirebaseResponse response = _client.Get($"Periods/{period}/{season}/{lessonCode}/StudentNotes/{number}");
+            return JsonConvert.DeserializeObject<StudentNoteInfo>(response.Body);
+        }
+
+        public List<StudentNoteInfo> GetStudentNoteInfos(string lesson)
+        {
+            _client = new FirebaseClient(_config);
+
+            FirebaseResponse response = _client.Get($"Periods/20-21/Spring/{lesson}/StudentNotes/");
+            dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
+
+            List<StudentNoteInfo> students = new List<StudentNoteInfo>();
+
+            foreach (var item in data)
+            {
+                students.Add(JsonConvert.DeserializeObject<StudentNoteInfo>(((JProperty)item).Value.ToString()));
+            }
+
+            return students;
+        }
+        
     }
 }

@@ -11,6 +11,21 @@ namespace MVC_web_UI
 {
     public class Program
     {
+        public string Period { get;}
+        public string Season { get;}
+        public string NextPeriod { get;}
+        public string NextSeason { get;}
+        public bool IsThePeriodOpen { get;}
+
+        public Program()
+        {
+            Period = "20-21";
+            Season = "Spring";
+            NextPeriod = "21-22";
+            NextSeason = "Autumn";
+            IsThePeriodOpen = true;
+        }
+
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();

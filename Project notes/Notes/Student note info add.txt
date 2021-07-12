@@ -1,0 +1,91 @@
+List<string> numbersList17 = new List<string>()
+            {
+                "170541001","170541002","170541003","170541004","170541005",
+            };
+
+            List<string> numbersList18 = new List<string>()
+            {
+                "180541001","180541002","180541003","180541004","180541005",
+            };
+
+            List<string> numbersList19 = new List<string>()
+            {
+                "190541001","190541002","190541003","190541004","190541005","190541023","190541048","190541049","190542017"
+            };
+
+            List<string> numbersList20 = new List<string>()
+            {
+                "200541001","200541002","200541003","200541004","200541005",
+            };
+
+List<string> d1 = new List<string> { "FİZ-105", "FİZ-111", "MAT-161", "TRD-109", "YDİ-107", "YMH-111", "YMH-113", "YMH-115" };
+            List<string> d2 = new List<string> { "FİZ-106", "FİZ-112", "MAT-162", "TRD-110", "YDİ-108", "YMH-112", "YMH-114" };
+            List<string> d3 = new List<string> { "AİT-209", "MAT-215", "YMH-211", "YMH-213", "YMH-215", "YMH-217", "İST-217" };
+            List<string> d4 = new List<string> { "AİT-210", "MAT-220", "YMH-210", "YMH-212", "YMH-214", "YMH-216", "YMH-218", "YMH-220" };
+            List<string> d5 = new List<string> { "YMH-311", "YMH-313", "YMH-315", "YMH-317", "YMH-319" };
+            List<string> d6 = new List<string> { "YMH-310", "YMH-312", "YMH-314" };
+            List<string> d7 = new List<string> { "YMH-401", "YMH-403" };
+            List<string> d8 = new List<string> { "YMH-402", "YMH-404" };
+
+
+            List<List<string>> y1a = new List<List<string>>() { d1 };
+            List<List<string>> y1s = new List<List<string>>() { d2 };
+            List<List<string>> y2a = new List<List<string>>() { d1, d3 };
+            List<List<string>> y2s = new List<List<string>>() { d2, d4 };
+            List<List<string>> y3a = new List<List<string>>() { d1, d3, d5 };
+            List<List<string>> y3s = new List<List<string>>() { d2, d4, d6 };
+            List<List<string>> y4a = new List<List<string>>() { d1, d3, d5, d7 };
+            List<List<string>> y4s = new List<List<string>>() { d2, d4, d6, d8 };
+
+string period = "17-18", session = "Autumn";
+
+            foreach (var lessons in y1s)
+            {
+                foreach (string lessonName in lessons)
+                {
+
+                    List<string> numbersList = null;
+
+                    char[] chars = lessonName.ToCharArray();
+
+                    if (chars[4].Equals('1'))
+                    {
+                        numbersList = numbersList20;
+                    }
+                    else if (chars[4].Equals('2'))
+                    {
+                        numbersList = numbersList19;
+                    }
+                    else if (chars[4].Equals('3'))
+                    {
+                        numbersList = numbersList18;
+                    }
+                    else if (chars[4].Equals('4'))
+                    {
+                        numbersList = numbersList17;
+                    }
+
+                    foreach (string number in numbersList)
+                    {
+                        NoteCalculator noteCalculator = new NoteCalculator();
+
+                        StudentNoteInfo info = new StudentNoteInfo();
+
+                        info.StudentNumber = number;
+                        info.MidtermExam = noteCalculator.NoteGenerate();
+                        info.FinalExamination = noteCalculator.NoteGenerate();
+                        info.Average = noteCalculator.AvarageGenerate(0.4, info.MidtermExam, 0.6, info.FinalExamination);
+
+                        if (info.Average < 50 && info.FinalExamination < 50)
+                        {
+                            info.MakeupExam = noteCalculator.NoteGenerate();
+                            info.Average = noteCalculator.AvarageGenerate(0.4, info.MidtermExam, 0.6, info.MakeupExam);
+                        }
+
+                        info.LetterGrade = noteCalculator.LetterGradeGenerate(info.Average);
+                        info.Status = noteCalculator.StatusGenerate(info.LetterGrade);
+
+                        _database.UpdateStudentInfo(period, session, lessonName, number, info);
+                    }
+                }
+            }

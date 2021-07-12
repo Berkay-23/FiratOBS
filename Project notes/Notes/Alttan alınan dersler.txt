@@ -1,0 +1,112 @@
+List<Student> students = _database.ListStudents();
+
+            Student student2 = new Student();
+
+            List<string> seasonList = new List<string>() { "Autumn", "Spring" };
+            List<string> periodList = new List<string>() { "17-18", "18-19", "19-20", "20-21" };
+
+            List<string> autumnList = new List<string>();
+            List<string> springList = new List<string>();
+
+            string season = "", period = "";
+
+            foreach (Student student in students)
+            {
+                student2 = student;
+
+                foreach (List<string> receivedLessons in student.ReceivedLessons)
+                {
+                    int lessonCode = Convert.ToInt32(receivedLessons[0].Substring(4));
+                    int number = Convert.ToInt32(lessonCode.ToString().Substring(0, 1));
+                    int num = Convert.ToInt32(student.Number.Substring(0, 2));
+
+                    if (lessonCode % 2 != 0)
+                    {
+                        season = "Autumn";
+                    }
+                    else
+                    {
+                        season = "Spring";
+                    }
+
+                    if (number == 1)
+                    {
+                        if (num == 17)
+                        {
+                            period = "17-18";
+                        }
+                        else if (num == 18)
+                        {
+                            period = "18-19";
+                        }
+                        else if (num == 19)
+                        {
+                            period = "19-20";
+                        }
+                        else if (num == 20)
+                        {
+                            period = "20-21";
+                        }
+                    }
+
+                    else if (number == 2)
+                    {
+                        if (num == 17)
+                        {
+                            period = "18-19";
+                        }
+                        else if (num == 18)
+                        {
+                            period = "19-20";
+                        }
+                        else if (num == 19)
+                        {
+                            period = "20-21";
+                        }
+                    }
+
+                    else if (number == 3)
+                    {
+                        if (num == 17)
+                        {
+                            period = "19-20";
+                        }
+                        else if (num == 18)
+                        {
+                            period = "20-21";
+                        }
+                    }
+
+                    else if (number == 4)
+                    {
+                        if (num == 17)
+                        {
+                            period = "20-21";
+                        }
+                    }
+
+                    List<string> lessonCodes = _database.Get(receivedLessons, period, season, student.Number);
+
+                    if (season.Equals("Autumn"))
+                    {
+                        foreach (var VARIABLE in lessonCodes)
+                        {
+                            autumnList.Add(VARIABLE);
+                        }
+                    }
+                    else
+                    {
+                        foreach (var VARIABLE in lessonCodes)
+                        {
+                            springList.Add(VARIABLE);
+                        }
+                    }
+
+                }
+
+                List<List<string>> LLB = new List<List<string>>() { autumnList, springList };
+                student2.LessonsLearnedBelow = LLB;
+                _database.AddEntitiesToFirebase($"Students/{student2.Number}", student2);
+                autumnList.Clear();
+                springList.Clear();
+            }

@@ -1,0 +1,364 @@
+/* ---------- Main ---------- */
+
+main .containerLogin{
+    padding-top:calc(50vh - 250px);
+    margin: 0px auto 0px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userType{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 450px;
+    margin-bottom: 1rem; 
+    margin-top: 1rem;
+}
+
+#studentRadio, #academicianRadio{
+    width: 200px;
+}
+
+#loginForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #21618C;
+    border-radius:20px;
+    padding: 2rem;
+    width: 450px;
+}
+
+/* ----------------------------------------- */
+nav.nav-default{
+    transform: translateX(-85%);
+}
+
+nav.nav-show{
+    animation: show_slide 1s ease forwards;
+}
+
+nav.nav-hide{
+    animation: hide_slide 1s ease forwards;
+}
+
+.sliderButton{
+    max-width:37.5px;
+}
+
+.sliderButton .pos-right{
+    transform:rotate(180deg);
+}
+
+.sliderButton .pos-left{
+    transform:rotate(0deg);
+}
+
+.sliderButton .turn-right{
+    animation: icon_turn_right 1s ease forwards;
+}
+
+.sliderButton .turn-left{
+    animation: icon_turn_left 1s ease forwards;
+}
+
+@keyframes show_slide {
+    
+    0%{ transform: translateX(-85%);}
+
+    40%{transform: translateX(10%);}
+
+    80%{transform: translateX(-10%);}
+
+    100%{transform: translateX(0%);}
+}
+
+@keyframes hide_slide{
+
+    0% {transform: translateX(0%);}
+
+    40%{transform: translateX(-100%);}
+
+    80%{transform: translateX(-60%);}
+
+    100%{transform: translateX(-85%);}
+}
+
+@keyframes icon_turn_left{
+
+    0% {transform: rotate(100deg);}
+
+    40%{transform: rotate(300deg);}
+
+    80%{transform: rotate(-40deg);}
+
+    100%{transform: rotate(0deg);}
+}
+
+@keyframes icon_turn_right{
+
+    0% {transform: rotate(80deg);}
+
+    40%{transform: rotate(-120deg);}
+
+    80%{transform: rotate(220deg);}
+
+    100%{transform: rotate(180deg);}
+}
+
+nav .section{
+    width: 85%;
+}
+
+nav .sliderButton{
+    display: flex;
+    height: 100%;
+    width: 15%;
+    align-items: center;
+    justify-content:center;
+}
+
+nav .sliderButton i{
+    font-size: 3rem;
+    color: #212529;
+}
+nav .sliderButton i:hover{ 
+    color: #fff;
+}
+
+.btn-group{
+    margin: 5px;
+}
+
+.dropdown-toggle{
+    border: 3px solid #212529;
+    border-radius:5px;
+    color: #fff;
+    padding: 6px 2px 6px 2px;
+}
+
+.dropdown-menu a,
+.dropdown-menu{
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    padding:0;
+}
+
+.list-group-item:hover,
+.list-group-item:hover > a{
+    background: #FFC107;
+    color: #212529;
+    cursor: pointer;
+}
+/* ----------------------------- */
+
+.content .container{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    width: 95%;
+    position: relative;
+    align-items: center;
+    justify-content:center;
+}
+
+.content .container form{
+    width: 75%;
+}
+
+#periodSelect{
+    width: 100%;
+}
+
+.content .container .table{
+    border: 1px solid #000;
+    margin-top: 50px;
+}
+
+/* ---------- Footer ---------- */
+
+.wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    height: auto;
+    width: 500px;
+    color: #000;
+    padding: 0;
+}
+
+.wrapper .button{
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    border-radius: 50px;
+    border: 0.5px solid #fff;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    overflow: hidden;
+}
+
+.wrapper .button:hover{
+    width: 200px;
+}
+
+.wrapper .button .icon{
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    border-radius: 50px;
+    box-sizing: border-box;
+    line-height: 60px;
+}
+
+.wrapper .button .icon i{
+    font-size: 30px;
+    line-height: 60px;
+}
+
+.wrapper .button span{
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.wrapper .btn-facebook:hover .icon{
+    background-color: #3458A3;
+    color: #fff;
+}
+
+.wrapper .btn-twitter:hover .icon{
+    background-color: #02A6EC;
+    color: #fff;
+}
+
+.wrapper .btn-linkedin-in:hover .icon{
+    background-color: #0A66C2;
+    color: #fff;
+}
+
+.wrapper .btn-youtube:hover .icon{
+    background-color:#FF0000 ;
+    color: #fff;
+}
+.wrapper .btn-instagram:hover .icon{
+    background-color: #C83D80;
+    color: #fff;
+}
+.wrapper .btn-chalkboard:hover .icon{
+    background-color: #273746;
+    color: #fff;
+}
+.wrapper .btn-envelope:hover .icon{
+    background-color: #239B56;
+    color: #fff;
+}
+
+/* ---------- ALERT --------- */
+
+#alertBox {
+    position:absolute;
+
+    background: linear-gradient(135deg, #21618C 0%, #1A5276 0%, #3498DB 100%, #fff 100%);
+
+    left:calc(50vw - 240px);
+    top:calc(50vh - 175px);
+    max-width: 480px;
+    max-height: 300px;
+    height: 100%;
+    width:100%;
+    padding : 10px 30px;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    border-radius:15px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+#alertBox .content-alert,
+#alertBox .content-alert .warn-icon,
+#alertBox .content-alert .warn-icon span{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    flex-direction: column;
+}
+
+#alertBox .content-alert .warn-icon{
+    height:115px;
+    width:115px;
+    background:linear-gradient(135deg, #fff 0%, #D35400  0%, #F4D03F  100%, #000 100%);
+    border-radius:50%;
+}
+
+.warn-icon span{
+    height: 100px;
+    width:100px;
+    background:linear-gradient(135deg, #21618C 0%, #1A5276 0%, #3498DB 100%, #fff 100%);
+    border-radius: inherit;
+}
+
+.warn-icon span i{
+    font-size: 50px;
+    background:linear-gradient(135deg, #fff 0%, #D35400  0%, #F4D03F  100%, #000 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#alertBox .content-alert h2{
+    margin: 15px 10px 10px 10px;
+}
+
+#alertBox .content-alert p{
+    margin: 5px;
+}
+
+#alertBox .content-alert button{
+    width:100%;
+    color: #fff;
+    margin:5px;
+    border-radius: 20px;
+}
+
+.alert-default{
+    display: none;
+}
+
+.alert-show {
+    animation: alert_show 1s ease forwards;
+}
+
+.alert-hide{
+    animation: alert_hide 1s ease forwards;
+}
+
+@keyframes alert_show {
+
+    0% {transform: scale(1);}
+
+    50% {transform: scale(0.8);}
+
+    100%{transform: scale(1);}
+}
+
+@keyframes alert_hide{
+
+    0% {transform: scale(0.8);}
+
+    50% {transform: scale(1);}
+
+    100%{
+        transform: scale(0);
+        display:none;
+    }
+}
+
+/* ---------- END ---------- */

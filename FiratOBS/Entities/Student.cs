@@ -19,7 +19,9 @@ namespace Entities
         public int Class { get; set; }
         public double TranscriptNote { get; set; }
         public List<double> ANOS { get; set; }
-        public List<List<string>> ReceivedLessons  { get; set; }
+        public List<string> RegisteredLessons  { get; set; }
+        public List<List<string>> ReceivedLessons { get; set; }
+        public List<List<string>> LessonsLearnedBelow { get; set; }
     }
 }
     

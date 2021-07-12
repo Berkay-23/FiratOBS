@@ -1,7 +1,8 @@
-﻿
+﻿@model LessonEnrollmentModel
 @{
     ViewData["Title"] = "Ders Kaydı";
     Layout = "~/Views/Shared/_StudentLayout.cshtml";
+    TempData["studentModel"] = TempData["studentModel"];
 }
 
 <h1>LessonEnrollment (Ders Kaydı)</h1>

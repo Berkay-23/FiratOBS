@@ -27,6 +27,7 @@ namespace MVC_web_UI.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+
             return View();
         }
 
